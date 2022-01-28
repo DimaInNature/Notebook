@@ -1,0 +1,1295 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--#region Resources-->
+
+    <FontFamily x:Key="FontFamily">/Notebook;component/Content/Font/ProximaNova/#Proxima Nova Th</FontFamily>
+
+    <Brush x:Key="Foreground">Black</Brush>
+
+    <Brush x:Key="ItemForeground">White</Brush>
+
+    <Brush x:Key="AccentColor">#805A3B</Brush>
+
+    <Brush x:Key="SecondaryColor">#FD974F</Brush>
+
+    <Brush x:Key="MouseOverColor">#C60000</Brush>
+
+    <Brush x:Key="ThirdRateColor">#FEF2E4</Brush>
+
+    <!--#endregion-->
+
+    <!--#region TextBox-->
+
+    <Style x:Key="LoginTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="{DynamicResource FontFamily}" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="FontSize" Value="20" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid Margin="5,0,0,0">
+
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+
+                            <TextBlock
+                                x:Name="hint"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="-1"
+                                Background="Transparent"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{StaticResource Foreground}"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding Tag}"
+                                TextAlignment="Center"
+                                Visibility="Collapsed" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value="" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Visibility" Value="Visible" />
+                            <Setter Property="BorderBrush" Value="Red" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Opacity" Value="0.5" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="ColorTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource AccentColor}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+        <Setter Property="FontSize" Value="20" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+
+                        <Grid Margin="5,0,0,0">
+
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" />
+
+                            <TextBlock
+                                x:Name="hint"
+                                VerticalAlignment="Center"
+                                Panel.ZIndex="-1"
+                                Background="Transparent"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{StaticResource ItemForeground}"
+                                IsHitTestVisible="False"
+                                Text="{TemplateBinding Tag}"
+                                TextAlignment="Center"
+                                Visibility="Collapsed" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value="" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Visibility" Value="Visible" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{StaticResource SecondaryColor}" />
+                            <Setter TargetName="hint" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="hint" Property="Opacity" Value="0.5" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region DatePicker-->
+
+    <Style x:Key="DatePickerStyle" TargetType="{x:Type DatePicker}">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="BorderBrush" Value="{StaticResource SecondaryColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePicker}">
+                    <Border
+                        Width="200"
+                        Height="40"
+                        Padding="{TemplateBinding Padding}"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
+                        <Grid
+                            x:Name="PART_Root"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <Grid.Resources>
+                                <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF" />
+                                <ControlTemplate x:Key="DropDownButtonTemplate" TargetType="{x:Type Button}">
+                                    <Grid>
+                                        <Grid
+                                            Width="19"
+                                            Height="18"
+                                            Margin="0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Background="#11FFFFFF"
+                                            FlowDirection="LeftToRight">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                                <ColumnDefinition Width="20*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="23*" />
+                                                <RowDefinition Height="19*" />
+                                                <RowDefinition Height="19*" />
+                                                <RowDefinition Height="19*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Border
+                                                x:Name="BackgroundGradient"
+                                                Grid.Row="1"
+                                                Grid.RowSpan="3"
+                                                Grid.ColumnSpan="4"
+                                                Margin="0,-1,0,0"
+                                                Background="White"
+                                                BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                CornerRadius=".5"
+                                                Opacity="1" />
+
+                                            <Rectangle
+                                                Grid.RowSpan="1"
+                                                Grid.ColumnSpan="4"
+                                                Fill="#ae41ab"
+                                                StrokeThickness="1">
+                                                <Rectangle.Stroke>
+                                                    <LinearGradientBrush StartPoint="0.48,1.25" EndPoint="0.48,-1">
+                                                        <GradientStop Color="#ae41ab" />
+                                                        <GradientStop Offset="1" Color="#ae41ab" />
+                                                    </LinearGradientBrush>
+                                                </Rectangle.Stroke>
+                                            </Rectangle>
+                                            <Path
+                                                Grid.Row="1"
+                                                Grid.RowSpan="3"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="4"
+                                                Margin="4,3,4,3"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Data="M11.426758,8.4305077 L11.749023,8.4305077 L11.749023,16.331387 L10.674805,16.331387 L10.674805,10.299648 L9.0742188,11.298672 L9.0742188,10.294277 C9.4788408,10.090176 9.9094238,9.8090878 10.365967,9.4510155 C10.82251,9.0929432 11.176106,8.7527733 11.426758,8.4305077 z M14.65086,8.4305077 L18.566387,8.4305077 L18.566387,9.3435936 L15.671368,9.3435936 L15.671368,11.255703 C15.936341,11.058764 16.27293,10.960293 16.681133,10.960293 C17.411602,10.960293 17.969301,11.178717 18.354229,11.615566 C18.739157,12.052416 18.931622,12.673672 18.931622,13.479336 C18.931622,15.452317 18.052553,16.438808 16.294415,16.438808 C15.560365,16.438808 14.951641,16.234707 14.468243,15.826504 L14.881817,14.929531 C15.368796,15.326992 15.837872,15.525723 16.289043,15.525723 C17.298809,15.525723 17.803692,14.895514 17.803692,13.635098 C17.803692,12.460618 17.305971,11.873379 16.310528,11.873379 C15.83071,11.873379 15.399232,12.079271 15.016094,12.491055 L14.65086,12.238613 z"
+                                                Fill="#e56b31"
+                                                RenderTransformOrigin="0.5,0.5"
+                                                Stretch="Fill" />
+
+                                            <Ellipse
+                                                Grid.ColumnSpan="4"
+                                                Width="3"
+                                                Height="3"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Fill="{StaticResource SecondaryColor}"
+                                                StrokeThickness="0" />
+
+                                        </Grid>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                x:Name="PART_Button"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Width="40"
+                                Margin="3,0,3,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                Focusable="False"
+                                Foreground="{TemplateBinding Foreground}"
+                                Template="{StaticResource DropDownButtonTemplate}" />
+
+                            <DatePickerTextBox
+                                x:Name="PART_TextBox"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Width="200"
+                                Height="40"
+                                Margin="-15,0,0,0"
+                                VerticalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent"
+                                Focusable="{TemplateBinding Focusable}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Text="{TemplateBinding Tag}" />
+
+                            <Grid
+                                x:Name="PART_DisabledVisual"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                IsHitTestVisible="False"
+                                Opacity="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Popup
+                                    x:Name="PART_Popup"
+                                    AllowsTransparency="True"
+                                    Placement="Bottom"
+                                    PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                    StaysOpen="False" />
+                            </Grid>
+                        </Grid>
+
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region PasswordBox-->
+
+    <Style x:Key="LoginPasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="20" />
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region TextBlock-->
+
+    <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Button-->
+
+    <!--#region Transparent-->
+
+    <Style x:Key="TransparentButtonStyle" TargetType="Button">
+
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="False"
+                        CornerRadius="5">
+                        <Grid>
+                            <Rectangle
+                                Fill="{TemplateBinding Background}"
+                                RadiusX="5"
+                                RadiusY="5" />
+                            <Rectangle
+                                Width="{TemplateBinding MinWidth}"
+                                HorizontalAlignment="Left"
+                                Opacity="0.3"
+                                RadiusX="5"
+                                RadiusY="5">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <LinearGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                                <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                                <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5" />
+                                                <TranslateTransform />
+                                            </TransformGroup>
+                                        </LinearGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#CCCCCC" />
+                                        <GradientStop Color="#F6F6F6" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}" />
+
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{DynamicResource TransparentButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{DynamicResource TransparentButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Classic-->
+
+    <Style x:Key="ButtonStyle" TargetType="Button">
+
+        <Setter Property="Background" Value="{StaticResource AccentColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="MinWidth" Value="0" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid>
+                        <Rectangle
+                            Fill="{TemplateBinding Background}"
+                            RadiusX="5"
+                            RadiusY="5" />
+                        <Rectangle
+                            Width="{TemplateBinding MinWidth}"
+                            HorizontalAlignment="Left"
+                            RadiusX="5"
+                            RadiusY="5">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                            <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                            <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Offset="1" Color="#FD974F" />
+                                    <GradientStop Color="#805A3B" />
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}" />
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard Storyboard="{DynamicResource ButtonMouseEnter}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard Storyboard="{DynamicResource ButtonMouseLeave}" />
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Text-->
+
+    <Style x:Key="TextButtonStyle" TargetType="Button">
+
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <ContentPresenter
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Content="{TemplateBinding Content}" />
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Control-->
+
+    <!--#region Base-->
+
+    <Style x:Key="ControlButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Height" Value="18" />
+        <Setter Property="Width" Value="22" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Close-->
+
+    <Style
+        x:Key="ControlButtonCloseStyle"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Content/Images/Controls/WindowControls/Close/Default.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Content/Images/Controls/WindowControls/Close/MouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region UserExit-->
+
+    <Style
+        x:Key="UserExitButton"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="1.5*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            x:Name="TextB"
+                            Grid.Row="1"
+                            FontFamily="{TemplateBinding FontFamily}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Text="Выйти" />
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="TextB" Property="Foreground" Value="White" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource MouseOverColor}" />
+                <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Menu-->
+
+    <!--#region Show-->
+
+    <Style
+        x:Key="MenuButtonShow"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Notebook;component/Content/Images/Controls/MenuControl/Default.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Image" Property="Source" Value="/Notebook;component/Content/Images/Controls/MenuControl/MouseEnter.png" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Close-->
+
+    <Style
+        x:Key="MenuButtonClose"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="Transparent" CornerRadius="60">
+                        <Image x:Name="Image" RenderOptions.BitmapScalingMode="Fant">
+                            <Image.Source>
+                                <BitmapImage
+                                    CacheOption="OnLoad"
+                                    DecodePixelHeight="200"
+                                    UriSource="/Notebook;component/Content/Images/Controls/WindowControls/CloseLeftMenu/Default.png" />
+                            </Image.Source>
+                        </Image>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Exit-->
+
+    <Style
+        x:Key="MenuUserExitButton"
+        BasedOn="{StaticResource ControlButtonStyle}"
+        TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Background" Value="{StaticResource ThirdRateColor}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Margin="-10,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource MouseOverColor}" />
+                <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <Style x:Key="BigButton" TargetType="Button">
+
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="{DynamicResource ThirdRateColor}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Foreground" Value="{StaticResource AccentColor}" />
+
+    </Style>
+
+    <Style
+        x:Key="HomeButtonStyle"
+        BasedOn="{StaticResource BigButton}"
+        TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Border
+                        Name="Border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+
+                        <Grid>
+
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="{TemplateBinding Content}"
+                                TextWrapping="Wrap" />
+
+                        </Grid>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <BeginStoryboard Storyboard="{DynamicResource HomeButtonMouseEnterAnimation}" />
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <BeginStoryboard Storyboard="{DynamicResource HomeButtonMouseLeaveAnimation}" />
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region RadioButton-->
+
+    <Style x:Key="MenuRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontSize" Value="17" />
+        <Setter Property="Background" Value="#F6F6F6" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+
+                            <ContentPresenter
+                                Grid.Column="1"
+                                Margin="-10,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}" />
+                        </Grid>
+                    </Border>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource MouseOverColor}" />
+                <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource MouseOverColor}" />
+                <Setter Property="Foreground" Value="{StaticResource ItemForeground}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Border-->
+
+    <Style x:Key="BorderStyle" TargetType="Border">
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                            <SkewTransform CenterX="0.5" CenterY="0.5" />
+                            <RotateTransform Angle="90" CenterX="0.5" CenterY="0.5" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Offset="1" Color="#805A3B" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region ComboBox-->
+
+    <ControlTemplate x:Key="ComboBoxToggleButtonTemplate" TargetType="ToggleButton">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border
+                Name="Border"
+                Grid.ColumnSpan="2"
+                Background="{StaticResource ThirdRateColor}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="1,1,1,1"
+                CornerRadius="12" />
+            <Border
+                Name="ButtonBorder"
+                Grid.Column="1"
+                Margin="1,1,1,1"
+                Background="Transparent"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="0,0,0,0"
+                CornerRadius="10" />
+
+            <Path
+                Name="Arrow"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
+                Fill="{StaticResource AccentColor}" />
+
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="UIElement.IsMouseOver" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="{StaticResource MouseOverColor}" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="{StaticResource Foreground}" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="{StaticResource AccentColor}" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="{StaticResource Foreground}" />
+            </Trigger>
+            <Trigger Property="UIElement.IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Panel.Background" Value="#eee" />
+                <Setter TargetName="ButtonBorder" Property="Panel.Background" Value="#eee" />
+                <Setter TargetName="ButtonBorder" Property="Border.BorderBrush" Value="#888" />
+                <Setter Property="TextElement.Foreground" Value="#888" />
+                <Setter TargetName="Arrow" Property="Shape.Fill" Value="#999" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="ModernComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
+        <Setter Property="FrameworkElement.OverridesDefaultStyle" Value="True" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
+        <Setter Property="TextElement.Foreground" Value="Black" />
+        <Setter Property="BorderBrush" Value="{StaticResource AccentColor}" />
+        <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton
+                            Name="ToggleButton"
+                            Grid.Column="2"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            ClickMode="Press"
+                            Focusable="False"
+                            IsChecked="{Binding Path=IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
+                            Template="{StaticResource ComboBoxToggleButtonTemplate}" />
+
+                        <ContentPresenter
+                            Name="ContentSite"
+                            Margin="15,3,23,3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding ComboBox.SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding ComboBox.SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            IsHitTestVisible="False" />
+                        <TextBox
+                            Name="PART_EditableTextBox"
+                            Margin="3,3,23,3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            Focusable="True"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"
+                            Visibility="Hidden">
+                            <TextBox.Template>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border Name="PART_ContentHost" Focusable="False" />
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                        <!--  Popup showing items  -->
+                        <Popup
+                            Name="Popup"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            IsOpen="{TemplateBinding ComboBox.IsDropDownOpen}"
+                            Placement="Bottom"
+                            PopupAnimation="Fade">
+                            <Grid
+                                Name="DropDown"
+                                MinWidth="{TemplateBinding FrameworkElement.ActualWidth}"
+                                MaxHeight="{TemplateBinding ComboBox.MaxDropDownHeight}"
+                                SnapsToDevicePixels="True">
+                                <Border
+                                    Name="DropDownBorder"
+                                    Margin="0,1,0,0"
+                                    Background="{StaticResource ThirdRateColor}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1,1,1,1"
+                                    CornerRadius="10" />
+                                <ScrollViewer
+                                    Margin="6"
+                                    Background="Transparent"
+                                    FontFamily="{StaticResource FontFamily}"
+                                    Foreground="{StaticResource Foreground}">
+                                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ItemsControl.HasItems" Value="False">
+                            <Setter TargetName="DropDownBorder" Property="FrameworkElement.MinHeight" Value="95" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="#888" />
+                        </Trigger>
+                        <Trigger Property="ItemsControl.IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                        <Trigger Property="ComboBox.IsEditable" Value="True">
+                            <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                            <Setter TargetName="PART_EditableTextBox" Property="UIElement.Visibility" Value="Visible" />
+                            <Setter TargetName="ContentSite" Property="UIElement.Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion-->
+
+    <!--#region Animation-->
+
+    <!--#region Left Menu-->
+
+    <!--#region Open-->
+
+    <Storyboard x:Key="LeftMenuOpen">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200" />
+        </DoubleAnimationUsingKeyFrames>
+        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="WorkAreaBorder" Storyboard.TargetProperty="(UIElement.IsHitTestVisible)">
+            <DiscreteBooleanKeyFrame KeyTime="0" Value="False" />
+        </BooleanAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MenuBorder" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuShowButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuCloseButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Close-->
+
+    <Storyboard x:Key="LeftMenuClose">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="WorkAreaBorder" Storyboard.TargetProperty="(UIElement.IsHitTestVisible)">
+            <DiscreteBooleanKeyFrame KeyTime="0" Value="True" />
+        </BooleanAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MenuBorder" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuCloseButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuShowButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Menu Items-->
+
+    <!--#region Panels-->
+
+    <!--#region Update-->
+
+    <Storyboard x:Key="ShowUpdatePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HideUpdatePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Delete-->
+
+    <Storyboard x:Key="ShowDeletePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HideDeletePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Login View-->
+
+    <!--#region Show Registration-->
+
+    <Storyboard x:Key="ShowRegistrationPanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sign_Up" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-400" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sin" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Welcome" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CreateAccount" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Exit" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region ShowAuthorization-->
+
+    <Storyboard x:Key="ShowAuthorizationPanel">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sin" Storyboard.TargetProperty="(UIElement.Visibility)">
+
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="-400" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Welcome" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sign_Up" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CreateAccount" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Button-->
+
+    <!--#region Transparent-->
+
+    <Storyboard x:Key="TransparentButtonMouseEnter">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="160" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="TransparentButtonMouseLeave">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Classic-->
+
+    <Storyboard x:Key="ButtonMouseEnter">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="160" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="ButtonMouseLeave">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Home-->
+
+    <Storyboard x:Key="HomeButtonMouseEnterAnimation">
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#C60000" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#C60000" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White" />
+        </ColorAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HomeButtonMouseLeaveAnimation">
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#805A3B" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#805A3B" />
+        </ColorAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+</ResourceDictionary>

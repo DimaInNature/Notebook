@@ -1,0 +1,298 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--#region Left Menu-->
+
+    <!--#region Open-->
+
+    <Storyboard x:Key="LeftMenuOpen">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200" />
+        </DoubleAnimationUsingKeyFrames>
+        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="WorkAreaBorder" Storyboard.TargetProperty="(UIElement.IsHitTestVisible)">
+            <DiscreteBooleanKeyFrame KeyTime="0" Value="False" />
+        </BooleanAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MenuBorder" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuShowButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuCloseButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Close-->
+
+    <Storyboard x:Key="LeftMenuClose">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="LeftMenu" Storyboard.TargetProperty="(FrameworkElement.Width)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="WorkAreaBorder" Storyboard.TargetProperty="(UIElement.IsHitTestVisible)">
+            <DiscreteBooleanKeyFrame KeyTime="0" Value="True" />
+        </BooleanAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MenuBorder" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuCloseButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="LeftMenuShowButton" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Menu Items-->
+
+    <!--#region Panels-->
+
+    <!--#region Update-->
+
+    <Storyboard x:Key="ShowUpdatePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HideUpdatePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="EditMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Delete-->
+
+    <Storyboard x:Key="ShowDeletePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HideDeletePanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="DeleteMenuPanel" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Login View-->
+
+    <!--#region Show Registration-->
+
+    <Storyboard x:Key="ShowRegistrationPanel">
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sign_Up" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-400" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sin" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Welcome" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CreateAccount" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Exit" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region ShowAuthorization-->
+
+    <Storyboard x:Key="ShowAuthorizationPanel">
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sin" Storyboard.TargetProperty="(UIElement.Visibility)">
+
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="-400" />
+            <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Welcome" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Sign_Up" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CreateAccount" Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static Visibility.Hidden}" />
+        </ObjectAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Panel_Slide" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+    <!--#region Button-->
+
+    <!--#region Transparent-->
+
+    <Storyboard x:Key="TransparentButtonMouseEnter">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="160" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <Storyboard x:Key="TransparentButtonMouseLeave">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Classic-->
+
+    <Storyboard x:Key="ButtonMouseEnter">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="160" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="ButtonMouseLeave">
+
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.MinWidth)">
+            <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="130" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="100" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="70" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="40" />
+            <EasingDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0" />
+        </DoubleAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <!--#endregion-->
+
+    <!--#region Home-->
+
+    <Storyboard x:Key="HomeButtonMouseEnterAnimation">
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#b341ad" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#b341ad" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White" />
+        </ColorAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+    <Storyboard x:Key="HomeButtonMouseLeaveAnimation">
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(BorderBrush).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#cb11ab" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="White" />
+        </ColorAnimationUsingKeyFrames>
+
+        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)">
+            <EasingColorKeyFrame KeyTime="0:0:0.2" Value="#cb11ab" />
+        </ColorAnimationUsingKeyFrames>
+
+    </Storyboard>
+
+
+    <!--#endregion-->
+
+    <!--#endregion-->
+
+
+</ResourceDictionary>

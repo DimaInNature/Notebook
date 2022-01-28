@@ -1,0 +1,447 @@
+﻿<Window
+    x:Class="Notebook.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:local="clr-namespace:Notebook.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="ThisWindow"
+    Title="Notebook"
+    Width="800"
+    Height="600"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Window.Triggers>
+
+        <!--#region Left Menu-->
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="LeftMenuShowButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuOpen}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="LeftMenuCloseButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+        <!--#region Home-->
+
+        <EventTrigger RoutedEvent="UIElement.GotFocus" SourceName="HomeMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="HomeMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+        <!--#region View-->
+
+        <EventTrigger RoutedEvent="UIElement.GotFocus" SourceName="ViewMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="ViewMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+        <!--#region Create-->
+
+        <EventTrigger RoutedEvent="UIElement.GotFocus" SourceName="CreateMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="CreateMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+        <!--#region Delete-->
+
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="DeleteMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource ShowDeletePanel}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="UIElement.GotFocus" SourceName="DeleteMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+        <!--#region Settings-->
+
+        <EventTrigger RoutedEvent="UIElement.GotFocus" SourceName="SettingsMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource LeftMenuClose}" />
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="SettingsMenuRadioButton">
+            <BeginStoryboard Storyboard="{StaticResource HideDeletePanel}" />
+        </EventTrigger>
+
+        <!--#endregion-->
+
+    </Window.Triggers>
+
+    <Border
+        CornerRadius="20"
+        MouseDown="WindowDragMove"
+        Style="{DynamicResource BorderStyle}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <!--#region Menu-->
+
+            <Grid Grid.Row="0" Panel.ZIndex="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Button
+                        x:Name="LeftMenuShowButton"
+                        Grid.Column="0"
+                        Width="45"
+                        Height="45"
+                        Margin="20,5,0,0"
+                        HorizontalAlignment="Left"
+                        Command="{Binding UpdateDataCollectionCommand}"
+                        Style="{DynamicResource MenuButtonShow}"
+                        Visibility="Visible" />
+
+                </Grid>
+
+                <Button
+                    Grid.Column="2"
+                    Width="35"
+                    Height="35"
+                    Margin="0,0,20,0"
+                    HorizontalAlignment="Right"
+                    Command="{Binding CloseApplicationCommand}"
+                    Style="{DynamicResource ControlButtonCloseStyle}"
+                    Visibility="Visible" />
+
+            </Grid>
+
+            <!--#region Left Menu-->
+
+            <Grid
+                x:Name="LeftMenu"
+                Grid.RowSpan="2"
+                Width="0"
+                HorizontalAlignment="Left"
+                Panel.ZIndex="3"
+                Background="White"
+                Row="0">
+
+                <Grid.Clip>
+
+                    <RectangleGeometry
+                        RadiusX="20"
+                        RadiusY="20"
+                        Rect="0,0,800,600" />
+
+                </Grid.Clip>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <RadioButton
+                    x:Name="HomeMenuRadioButton"
+                    Grid.Row="1"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding ShowMenuPageCommand}"
+                    Content="Меню"
+                    Style="{DynamicResource MenuRadioButtonStyle}" />
+
+                <RadioButton
+                    x:Name="ViewMenuRadioButton"
+                    Grid.Row="2"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding ShowViewPageCommand}"
+                    Content="Блокнот"
+                    Style="{DynamicResource MenuRadioButtonStyle}" />
+
+                <RadioButton
+                    x:Name="CreateMenuRadioButton"
+                    Grid.Row="3"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding ShowCreatePageCommand}"
+                    Content="Создать"
+                    Style="{DynamicResource MenuRadioButtonStyle}" />
+
+                <RadioButton
+                    x:Name="DeleteMenuRadioButton"
+                    Grid.Row="4"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding ShowDeletePageCommand}"
+                    Content="Удалить"
+                    Style="{DynamicResource MenuRadioButtonStyle}" />
+
+                <RadioButton
+                    x:Name="SettingsMenuRadioButton"
+                    Grid.Row="5"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding ShowSettingsPageCommand}"
+                    Content="Настройки"
+                    Style="{DynamicResource MenuRadioButtonStyle}" />
+
+                <Button
+                    x:Name="LogoutMenuButton"
+                    Grid.Row="6"
+                    Width="180"
+                    Height="25"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Left"
+                    Panel.ZIndex="3"
+                    Command="{Binding LogoutCommand}"
+                    CommandParameter="{Binding ElementName=ThisWindow}"
+                    Content="Выйти"
+                    Style="{DynamicResource MenuUserExitButton}" />
+
+            </Grid>
+
+            <!--#endregion-->
+
+            <!--#region Panels-->
+
+            <!--#region Delete-->
+
+            <Border
+                x:Name="DeleteMenuPanel"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Margin="0,0,300,0"
+                Panel.ZIndex="2"
+                Background="White"
+                CornerRadius="20"
+                Opacity="0"
+                Visibility="Collapsed">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="300" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Background="Transparent" Column="0" />
+
+                    <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Disabled">
+
+                        <StackPanel Orientation="Vertical">
+
+                            <ListBox
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                ItemsSource="{Binding Notes, Mode=TwoWay}"
+                                SelectedItem="{Binding SelectedDeleteNote, Mode=TwoWay}">
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                                        <i:InvokeCommandAction Command="{Binding SelectDeleteItemCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+
+                                        <Border
+                                            Width="250"
+                                            Height="40"
+                                            Margin="10,0,10,0"
+                                            Background="{DynamicResource AccentColor}"
+                                            CornerRadius="10">
+
+                                            <Grid>
+
+                                                <TextBlock
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="20"
+                                                    Foreground="{DynamicResource ItemForeground}"
+                                                    Style="{DynamicResource TextBlockStyle}"
+                                                    Text="{Binding Title}" />
+
+                                            </Grid>
+
+                                        </Border>
+
+                                    </DataTemplate>
+
+                                </ListBox.ItemTemplate>
+
+                            </ListBox>
+
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+                </Grid>
+
+            </Border>
+
+            <!--#endregion-->
+
+            <!--#endregion-->
+
+            <Border
+                Name="MenuBorder"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Panel.ZIndex="1"
+                Background="{DynamicResource AccentColor}"
+                CornerRadius="20"
+                IsHitTestVisible="False"
+                Opacity="0.2"
+                Visibility="Collapsed" />
+
+            <Button
+                x:Name="LeftMenuCloseButton"
+                Grid.Row="0"
+                Width="30"
+                Height="30"
+                Margin="200,-20,0,0"
+                HorizontalAlignment="Left"
+                Style="{DynamicResource MenuButtonClose}"
+                Visibility="Collapsed" />
+
+            <!--#endregion-->
+
+            <Grid Grid.Row="1">
+
+                <Border
+                    Name="WorkAreaBorder"
+                    Panel.ZIndex="-1"
+                    Background="{DynamicResource ThirdRateColor}"
+                    CornerRadius="20">
+
+                    <Grid Visibility="{Binding MenuIsVisible, Mode=TwoWay}">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.2*" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Button
+                            x:Name="HomeCreateOrderButton"
+                            Grid.Row="0"
+                            Margin="15"
+                            Command="{Binding ShowViewPageCommand}"
+                            Content="Блокнот"
+                            FontSize="70"
+                            Style="{DynamicResource HomeButtonStyle}" />
+
+                        <Grid Row="1">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                x:Name="HomeViewOrderButton"
+                                Grid.Column="0"
+                                Margin="15,0,5,15"
+                                Command="{Binding ShowCreatePageCommand}"
+                                Content="Создать"
+                                FontSize="30"
+                                Style="{DynamicResource HomeButtonStyle}" />
+
+                            <Button
+                                x:Name="HomeDeleteOrderButton"
+                                Grid.Column="1"
+                                Margin="15,0,5,15"
+                                Command="{Binding ShowDeletePageCommand}"
+                                Content="Удалить"
+                                FontSize="30"
+                                Style="{DynamicResource HomeButtonStyle}" />
+
+                            <Button
+                                x:Name="HomeSettingsOrderButton"
+                                Grid.Column="2"
+                                Margin="15,0,15,15"
+                                Command="{Binding ShowSettingsPageCommand}"
+                                Content="Настройки"
+                                FontSize="30"
+                                Style="{DynamicResource HomeButtonStyle}" />
+
+                        </Grid>
+
+                    </Grid>
+
+                </Border>
+
+            </Grid>
+
+            <Frame
+                x:Name="MainFrame"
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="10"
+                Panel.ZIndex="0"
+                Content="{Binding FrameSource, Mode=TwoWay}"
+                NavigationUIVisibility="Hidden"
+                Visibility="{Binding FrameVisibility, Mode=TwoWay}" />
+
+        </Grid>
+
+    </Border>
+
+</Window>

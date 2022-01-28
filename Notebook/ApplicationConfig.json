@@ -1,0 +1,4 @@
+{
+  "Theme": 0,
+  "DataBaseConnection": "Data Source=.\\ApplicationDataBase.db"
+}
